@@ -60,7 +60,7 @@ public class TokenService(ILogger<TokenService> logger)
                 new(JwtRegisteredClaimNames.Sub, jwtSub),
                 new(JwtRegisteredClaimNames.Jti, cardGuid.ToString()),
                 new(JwtRegisteredClaimNames.Iat, DateTimeOffset.UtcNow.ToUnixTimeSeconds().ToString()),
-                new(ClaimTypes.Name, "name"),
+                new(ClaimTypes.Name, "name"), // use username/email here if needed
                 new(ClaimTypes.Role, role.ToString())
             };
 
@@ -79,8 +79,7 @@ public class TokenService(ILogger<TokenService> logger)
             SecurityAlgorithms.HmacSha256);
     }
 
-
-    // // Validate a JWT token
+    // Validate a JWT token
     public ClaimsPrincipal ValidateJwtToken(string token)
     {
         // Encode the JWT secret key
