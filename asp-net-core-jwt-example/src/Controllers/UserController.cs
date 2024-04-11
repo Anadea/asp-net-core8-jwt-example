@@ -12,6 +12,7 @@ public class UserController(TokenService tokenService, ILogger<TokenService> log
 {
     /*
      *  This request is private, only for authorized users.
+     *  Authorization header should contain Bearer token.
      */
     [HttpGet(Name = "UserDetails")]
     [Authorize]
