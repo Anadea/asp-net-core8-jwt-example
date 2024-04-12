@@ -9,7 +9,7 @@ namespace asp_net_core_jwt_example.Services;
 public class TokenService(ILogger<TokenService> logger)
 {
     private const int ExpirationMinutes = 60;
-
+    
     private string? _validIssuer =
         new ConfigurationBuilder().AddJsonFile("appsettings.json").Build()
             .GetSection("JwtTokenSettings")["ValidIssuer"];
